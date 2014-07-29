@@ -1,28 +1,29 @@
-package org.honux.hello;
+package org.honux.YejinTest;
+
+
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+    public final static String SUA_MESSAGE = "SUA MESSAGE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = (Button) findViewById(R.id.button1);
-        button.setOnClickListener( new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "æ»≥Á«œººø‰", Toast.LENGTH_SHORT).show();
-			}        
-        });
+        Button btn1 = (Button) findViewById(R.id.button1);
+        btn1.setOnClickListener(this);
     }
 
 
@@ -43,5 +44,16 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onClick(View v) {
+    	int id = v.getId();
+    	Log.v("++++++++++++++++++++++++++++++++", "ID" + id);
+    	Intent i = new Intent(this, SecondActivity.class);
+    	EditText et = (EditText)findViewById(R.id.editText1);
+    	String str = et.getText().toString();
+    	Log.v("+++++++++++++++++++++++++++++++++++", str);
+    	i.putExtra(SUA_MESSAGE, str);
+    	startActivity(i);
     }
 }

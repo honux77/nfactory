@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.honux.hello"
+    package="org.honux.YejinTest"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="16" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+        android:name=".SecondActivity"
+        android:label="second activity"
+        android:parentActivityName=".MainActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
     </application>
 
 </manifest>
